@@ -15,7 +15,7 @@ exports.getUsersList = async (req, res) => {
 };
 
 //add new user
-exports.adduser = async (req, res) => {
+exports.addUser = async (req, res) => {
   const { firstName, lastName, email, birthDate } = req.body;
 
   //-validation of input fields at server side
@@ -26,9 +26,9 @@ exports.adduser = async (req, res) => {
   //-check if user aldready in DB
   const userData = await User.findOne({ email });
   if (userData) {
-    return res
-      .status(400)
-      .json({ errors: [{ message: "User aldready exist in DataBase" }] });
+    return res.status(400).json({
+      errors: [{ message: "This email is aldready exist in DataBase" }],
+    });
   }
 
   //-save user to db
@@ -53,5 +53,34 @@ exports.UserDetails = async (req, res) => {
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
+  }
+};
+//delete user
+exports.DeleteUser = async (req, res) => {
+  try {
+    await User.deleteOne({
+      _id: req.params.id,
+    });
+    res.status(200).json("User deleted successfully");
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+};
+//update user
+exports.UpdateUser = async (req, res) => {
+  const { firstName, lastName, email, birthDate } = req.body;
+  try {
+    await User.updateOne(
+      {
+        _id: req.params.id,
+      },
+      { firstName, lastName, email, birthDate }
+    );
+
+    res.status(200).json("User updated successfully");
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Check credentials");
   }
 };

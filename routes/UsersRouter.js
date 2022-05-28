@@ -18,6 +18,16 @@ router.get("/details/:id", UsersController.UserDetails);
  * @route   POST /api/users/add
  * @desc    post user endpoint
  */
-router.post("/add", UsersController.adduser);
+router.post("/add", UsersController.addUser);
+/**
+ * @route   DELETE /api/users/delete/:id
+ * @desc    delete user endpoint
+ */
+router.delete("/delete/:id", UsersController.DeleteUser);
+/**
+ * @route   PUT /api/users/update/:id
+ * @desc    update user endpoint
+ */
+router.put("/update/:id", UsersController.UpdateUser);
 
 module.exports = router;
