@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
+  width: ${({ width }) => width};
+  display: ${({ display }) => display};
   border-radius: 5px;
   border: 2px solid #e7e7e7;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
