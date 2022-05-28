@@ -10,6 +10,11 @@ const UsersController = require("../controllers/UsersController");
  */
 router.get("/", UsersController.getUsersList);
 /**
+ * @route   GET /api/users/details/:id
+ * @desc    single user endpoint
+ */
+router.get("/details/:id", UsersController.UserDetails);
+/**
  * @route   POST /api/users/add
  * @desc    post user endpoint
  */

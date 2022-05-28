@@ -42,3 +42,16 @@ exports.adduser = async (req, res) => {
 
   res.send("User added successfully");
 };
+
+//get single user detail
+exports.UserDetails = async (req, res) => {
+  try {
+    const UserDetails = await User.findOne({
+      _id: req.params.id,
+    });
+    res.status(200).json({ UserDetails });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+};
