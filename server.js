@@ -6,6 +6,11 @@ const app = express();
 
 const router = require("./routes/router");
 
+const connectDB = require("./utils/database/connectDB");
+
+//trigger connect to db function
+connectDB();
+
 app.use("/api", router);
 
 app.listen(process.env.PORT, () => {
