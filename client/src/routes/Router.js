@@ -6,6 +6,7 @@ import { Users } from "../pages/Users";
 import { User } from "../pages/User";
 import { About } from "../pages/About";
 import Navbar from "../components/Navbar";
+import { Footer } from "../components/Footer";
 
 export const Router = () => {
   return (
@@ -20,7 +21,7 @@ export const Router = () => {
         </Routes>
       </RoutesContainer>
 
-      {/*     <Footer /> */}
+      <Footer />
     </React.Fragment>
   );
 };

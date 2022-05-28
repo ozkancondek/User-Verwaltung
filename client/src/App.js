@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider, useTheme } from "./providers/ThemeProvider";
+import { BrowserRouter } from "react-router-dom";
+import GlobalStyles from "./styles/Global.style";
+import React from "react";
+import { Router } from "./routes/Router";
 
 function App() {
+  const { panel, isDark } = useTheme();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <GlobalStyles isDark={isDark} theme={panel} />
+      <Router />
+    </React.Fragment>
   );
 }
 
-export default App;
+const Main = () => (
+  <BrowserRouter>
+    <ThemeProvider>
+      <App />
+    </ThemeProvider>
+  </BrowserRouter>
+);
+
+export default Main;

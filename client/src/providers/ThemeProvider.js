@@ -13,6 +13,7 @@ export const ThemeProvider = ({ children }) => {
       dark: "#2e2e2e",
       blue: " #3DBFEF",
       danger: "#ff1e1e",
+      grey: "#747f81",
     },
 
     font: {
@@ -20,9 +21,12 @@ export const ThemeProvider = ({ children }) => {
       secondary: "'Poppins', sans-serif;",
     },
     screen: {
-      small: "480px",
-      medium: "768px",
-      large: "1024",
+      small_min: `@media(min-width:480px)`,
+      small_max: `@media(max-width:480px)`,
+      medium_min: `@media(min-width:768px)`,
+      medium_max: `@media(max-width:768px)`,
+      large_min: `@media(min-width:1024px)`,
+      large_max: `@media(max-width:1024px)`,
     },
   };
 
