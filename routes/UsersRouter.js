@@ -9,5 +9,10 @@ const UsersController = require("../controllers/UsersController");
  * @desc    Users list endpoint
  */
 router.get("/", UsersController.getUsersList);
+/**
+ * @route   POST /api/users/add
+ * @desc    post user endpoint
+ */
+router.post("/add", UsersController.adduser);
 
 module.exports = router;
