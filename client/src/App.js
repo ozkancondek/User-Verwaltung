@@ -4,6 +4,8 @@ import GlobalStyles from "./styles/Global.style";
 import React from "react";
 import { Router } from "./routes/Router";
 import { ApiProvider } from "./providers/ApiProvider";
+import { ErrorBoundary } from "react-error-boundary";
+import { Error } from "./components/Error";
 
 function App() {
   const { panel, isDark } = useTheme();
@@ -17,13 +19,15 @@ function App() {
 }
 
 const Main = () => (
-  <BrowserRouter>
-    <ThemeProvider>
-      <ApiProvider>
-        <App />
-      </ApiProvider>
-    </ThemeProvider>
-  </BrowserRouter>
+  <ErrorBoundary FallbackComponent={Error}>
+    <BrowserRouter>
+      <ThemeProvider>
+        <ApiProvider>
+          <App />
+        </ApiProvider>
+      </ThemeProvider>
+    </BrowserRouter>
+  </ErrorBoundary>
 );
 
 export default Main;
