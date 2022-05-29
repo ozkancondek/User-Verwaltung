@@ -31,9 +31,12 @@ function Navbar() {
             <NavbarLink to="/users" theme={panel} isdark={isDark}>
               Users
             </NavbarLink>
+            <NavbarLink to="/add" theme={panel} isdark={isDark}>
+              Add User
+            </NavbarLink>
 
             <NavbarLink to="/about" theme={panel} isdark={isDark}>
-              About Us
+              About
             </NavbarLink>
             <OpenLinksButton
               theme={panel}
@@ -68,9 +71,12 @@ function Navbar() {
           <NavbarLinkExtended to="/users" theme={panel} isdark={isDark}>
             Users
           </NavbarLinkExtended>
+          <NavbarLinkExtended to="/add" theme={panel} isdark={isDark}>
+            Add User
+          </NavbarLinkExtended>
 
           <NavbarLinkExtended to="/about" theme={panel} isdark={isDark}>
-            About Us
+            About
           </NavbarLinkExtended>
         </NavbarExtendedContainer>
       )}

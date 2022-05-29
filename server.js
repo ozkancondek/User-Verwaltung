@@ -1,11 +1,16 @@
 //dotenv configuration package
 require("dotenv").config();
 
+var cors = require("cors");
+
 const express = require("express");
 
 const app = express();
 
 const router = require("./routes/router");
+
+//to prevent proxy conflict
+app.use(cors());
 
 //call connectDB function
 const connectDB = require("./utils/database/connectDB");
