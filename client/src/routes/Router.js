@@ -7,6 +7,7 @@ import { User } from "../pages/User";
 import { About } from "../pages/About";
 import Navbar from "../components/Navbar";
 import { Footer } from "../components/Footer";
+import { AddUser } from "../pages/AddUser";
 
 export const Router = () => {
   return (
@@ -17,6 +18,7 @@ export const Router = () => {
           <Route path="/" element={<Home />} />
           <Route path="/users" element={<Users />} />
           <Route path="/user/:id" element={<User />} />
+          <Route path="/add" element={<AddUser />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </RoutesContainer>
