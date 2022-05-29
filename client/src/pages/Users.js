@@ -33,6 +33,7 @@ export const Users = () => {
     <Container
       width="100%"
       bg={() => (isDark ? panel.secondary : panel.primary)}
+      margin="20px 0 20px 0"
     >
       <FlexContainer direction="row" justify="space-evenly" bg="#96b9bb">
         <TextField

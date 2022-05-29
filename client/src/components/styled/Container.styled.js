@@ -8,10 +8,9 @@ export const Container = styled.div`
   width: ${({ width }) => width || "auto"};
   height: ${({ height }) => height || "auto"};
   padding: ${({ padding }) => padding || 0};
-  margin: ${({ margin }) => margin || 0};
+  margin: ${({ margin }) => margin || "auto"};
   display: flex;
   align-items: ${({ align }) => align || "center"};
   justify-content: ${({ justify }) => justify || "center"};
   flex-direction: ${({ direction }) => direction || "column"};
-  margin: auto;
 `;

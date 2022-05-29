@@ -12,8 +12,10 @@ export const Button = styled.button`
   padding: 15px 25px;
   background-color: ${({ bg }) => bg || "  aqua"};
   color: ${({ color }) => color || "#131313"};
+  margin: 15px;
   &:hover {
     opacity: 0.9;
-    transform: scale(0.98);
+    transform: scale(0.95);
+    background-color: #949a9b;
   }
 `;

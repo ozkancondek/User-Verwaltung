@@ -3,6 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import GlobalStyles from "./styles/Global.style";
 import React from "react";
 import { Router } from "./routes/Router";
+import { ApiProvider } from "./providers/ApiProvider";
 
 function App() {
   const { panel, isDark } = useTheme();
@@ -18,7 +19,9 @@ function App() {
 const Main = () => (
   <BrowserRouter>
     <ThemeProvider>
-      <App />
+      <ApiProvider>
+        <App />
+      </ApiProvider>
     </ThemeProvider>
   </BrowserRouter>
 );

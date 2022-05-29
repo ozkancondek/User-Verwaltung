@@ -32,7 +32,7 @@ function Navbar() {
               Users
             </NavbarLink>
             <NavbarLink to="/add" theme={panel} isdark={isDark}>
-              Add User
+              Add-User
             </NavbarLink>
 
             <NavbarLink to="/about" theme={panel} isdark={isDark}>
@@ -72,7 +72,7 @@ function Navbar() {
             Users
           </NavbarLinkExtended>
           <NavbarLinkExtended to="/add" theme={panel} isdark={isDark}>
-            Add User
+            Add-User
           </NavbarLinkExtended>
 
           <NavbarLinkExtended to="/about" theme={panel} isdark={isDark}>
