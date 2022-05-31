@@ -1,17 +1,19 @@
-import { Form, Input, DatePicker, Button } from "antd";
-import "antd/dist/antd.css";
 import { useState } from "react";
-import { useApi } from "../providers/ApiProvider";
-import { Alert } from "antd";
 import { useNavigate } from "react-router-dom";
+import { Form, Input, DatePicker, Button, Alert } from "antd";
+import "antd/dist/antd.css";
+import { useApi } from "../providers/ApiProvider";
 
 export const FormComponent = ({ buttonText, userInfo }) => {
+  const { addNewUser, updateUser } = useApi();
+  const navigate = useNavigate();
+  //Message states for response from server
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const { addNewUser, updateUser } = useApi();
+  //State for date format
   const [birthDate, setBirthDate] = useState("");
-  const navigate = useNavigate();
 
+  //Handle function after form submit
   const onFinish = (values) => {
     const user = {
       firstName: values.firstName,
@@ -19,34 +21,42 @@ export const FormComponent = ({ buttonText, userInfo }) => {
       email: values.email,
       birthDate: birthDate,
     };
+
+    //Add new user to database function
     const addUserToDb = async () => {
       try {
         const res = await addNewUser(user);
         setMessage(res);
       } catch (error) {
-        setErrorMessage(error.response.data.errors.message);
+        setErrorMessage(error?.response?.data?.errors?.[0]?.message);
         console.log(error);
       }
     };
+
+    //Update current user function
     const updateUserInDb = async () => {
       try {
         const res = await updateUser(userInfo._id, user);
         setMessage(res);
       } catch (error) {
-        setErrorMessage(error.response.data.errors.message);
+        setErrorMessage(error?.response?.data?.errors?.[0]?.message);
       }
     };
+
+    //Main purpose of the FormComponent. Update current user || add new user
     userInfo ? updateUserInDb() : addUserToDb();
 
+    //return to users page after 3 seconds
     setTimeout(() => {
       navigate("/users");
     }, 3000);
   };
 
+  //Input handle function to storage date data
   const onChange = (date, dateString) => {
     setBirthDate(dateString.toString());
   };
-  console.log(errorMessage);
+
   return (
     <Form
       size="large"
@@ -65,7 +75,9 @@ export const FormComponent = ({ buttonText, userInfo }) => {
       onFinish={onFinish}
       autoComplete="off"
     >
+      {/* Display response messages  */}
       {message && <Alert message={message} type="success" showIcon />}
+      {errorMessage && <Alert message={errorMessage} type="error" showIcon />}
       <br />
       <Form.Item
         label="Firstname"
@@ -117,6 +129,7 @@ export const FormComponent = ({ buttonText, userInfo }) => {
       </Form.Item>
       <Form.Item>
         <Button type="primary" htmlType="submit" block>
+          {/*  Pass data as prop. So the button can change the inner content */}
           {buttonText}
         </Button>
       </Form.Item>

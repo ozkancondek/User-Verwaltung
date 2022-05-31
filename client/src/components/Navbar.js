@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { MdOutlineDarkMode } from "react-icons/md";
+import { BsFillSunFill } from "react-icons/bs";
+import { useTheme } from "../providers/ThemeProvider";
 import {
   NavbarContainer,
   LeftContainer,
@@ -11,13 +14,10 @@ import {
   NavbarLinkExtended,
   LogoContainer,
 } from "./styled/Navbar.styled";
-import { MdOutlineDarkMode } from "react-icons/md";
-import { BsFillSunFill } from "react-icons/bs";
 
-import { useTheme } from "../providers/ThemeProvider";
-
-function Navbar() {
+export const Navbar = () => {
   const { panel, isDark, setIsDark } = useTheme();
+  //Boolean state for chenge responsive navbar
   const [extendNavbar, setExtendNavbar] = useState(false);
 
   return (
@@ -36,7 +36,7 @@ function Navbar() {
             </NavbarLink>
 
             <NavbarLink to="/about" theme={panel} isdark={isDark}>
-              About
+              About-Task
             </NavbarLink>
             <OpenLinksButton
               theme={panel}
@@ -76,12 +76,10 @@ function Navbar() {
           </NavbarLinkExtended>
 
           <NavbarLinkExtended to="/about" theme={panel} isdark={isDark}>
-            About
+            About-Task
           </NavbarLinkExtended>
         </NavbarExtendedContainer>
       )}
     </NavbarContainer>
   );
-}
-
-export default Navbar;
+};

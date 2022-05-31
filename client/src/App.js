@@ -1,10 +1,10 @@
-import { ThemeProvider, useTheme } from "./providers/ThemeProvider";
-import { BrowserRouter } from "react-router-dom";
-import GlobalStyles from "./styles/Global.style";
 import React from "react";
-import { Router } from "./routes/Router";
-import { ApiProvider } from "./providers/ApiProvider";
+import { BrowserRouter } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
+import { ThemeProvider, useTheme } from "./providers/ThemeProvider";
+import { ApiProvider } from "./providers/ApiProvider";
+import GlobalStyles from "./styles/Global.style";
+import { Router } from "./routes/Router";
 import { Error } from "./components/Error";
 
 function App() {

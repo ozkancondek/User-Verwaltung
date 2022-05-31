@@ -16,6 +16,7 @@ export const ApiProvider = ({ children }) => {
     }
   };
 
+  //main data-request functions, reachable from every inner component
   const getAllUsers = async () => {
     let res = await asyncWrapper(() => initialServices.fetchData());
     return res;

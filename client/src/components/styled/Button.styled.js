@@ -11,6 +11,7 @@ export const Button = styled.button`
   font-weight: 700;
   padding: 15px 25px;
   background-color: ${({ bg }) => bg || "  aqua"};
+  opacity: 0.9;
   color: ${({ color }) => color || "#131313"};
   margin: 15px;
   &:hover {

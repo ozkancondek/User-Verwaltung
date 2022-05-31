@@ -28,3 +28,9 @@
 Click [here](https://blueberry-places-app.herokuapp.com) to use the app!
 
 ---
+
+## To start project
+
+- Clone project source from remote to local
+- Install node module packages
+- run `npm run develop` command to start project

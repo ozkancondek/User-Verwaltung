@@ -5,7 +5,7 @@ import { Home } from "../pages/Home";
 import { Users } from "../pages/Users";
 import { User } from "../pages/User";
 import { About } from "../pages/About";
-import Navbar from "../components/Navbar";
+import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { AddUser } from "../pages/AddUser";
 
@@ -22,7 +22,6 @@ export const Router = () => {
           <Route path="/about" element={<About />} />
         </Routes>
       </RoutesContainer>
-
       <Footer />
     </React.Fragment>
   );

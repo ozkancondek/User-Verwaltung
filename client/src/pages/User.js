@@ -1,48 +1,65 @@
 import React from "react";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Alert } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 import { Container } from "../components/styled/Container.styled";
 import { FlexContainer } from "../components/styled/FlexContainer.styled";
 import { TextField } from "../components/styled/TextField.styled";
+import { Gif } from "../components/styled/Gif.styled";
+import { Button } from "../components/styled/Button.styled";
+import { FormComponent } from "../components/FormComponent";
 import { useApi } from "../providers/ApiProvider";
 import { useTheme } from "../providers/ThemeProvider";
 import bg from "../assets/avatar.jpg";
 import gif from "../assets/loader.gif";
-import { Gif } from "../components/styled/Gif.styled";
-import { Button } from "../components/styled/Button.styled";
-import { FormComponent } from "../components/FormComponent";
-import { Alert } from "antd";
 
 export const User = () => {
   const navigate = useNavigate();
-  const [message, setMessage] = useState("");
-  const { panel, isDark } = useTheme();
   const params = useParams();
-  const [user, setUser] = useState([]);
-  const [isForm, setIsForm] = useState(false);
+  const { panel, isDark } = useTheme();
   const { getSingleUser, deleteUser } = useApi();
 
+  //State for storage response message
+  const [message, setMessage] = useState("");
+
+  //State for storage current user
+  const [user, setUser] = useState([]);
+
+  //Bool-State for visibility of update form
+  const [isForm, setIsForm] = useState(false);
+
+  //State for storing and modifying birthDate data
+  const [birth, setBirth] = useState("");
+
+  //function for fetching data with id. Id comes from param
   const fetchUser = async () => {
     const res = await getSingleUser(params.id);
     setUser(res.UserDetails);
+    setBirth(res.UserDetails.birthDate.slice(0, 10));
   };
+
+  //function for delete visible user on screen
   const handleDelete = async () => {
     const res = await deleteUser(params.id);
     setMessage(res);
+
+    //forward to users page after 3 seconds
     setTimeout(() => {
       navigate("/users");
     }, 3000);
   };
 
+  //trigger fetch data when component first mounth
   useEffect(() => {
     fetchUser();
   }, []);
 
   return (
-    <>
+    <React.Fragment>
+      {/* if user clicks to update button, isForm state will be true and form component will mounth */}
       {isForm ? (
         <Container width="60%" height="95vh">
+          {/*  send the button-inner-text and currentUser as prop */}
           <FormComponent buttonText="Update-User" userInfo={user} />
         </Container>
       ) : (
@@ -111,7 +128,7 @@ export const User = () => {
                   Birth Date:
                 </TextField>
                 <TextField color={panel.text.primary} size="1.4rem">
-                  {user.birthDate.slice(0, 10)}
+                  {birth}
                 </TextField>
               </FlexContainer>
 
@@ -146,6 +163,6 @@ export const User = () => {
         </Container>
       )}
       )
-    </>
+    </React.Fragment>
   );
 };

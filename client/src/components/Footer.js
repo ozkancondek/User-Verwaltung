@@ -1,6 +1,6 @@
 import React from "react";
-import { useTheme } from "../providers/ThemeProvider";
 import { FooterContainer } from "./styled/Footer.styled";
+import { useTheme } from "../providers/ThemeProvider";
 
 export const Footer = () => {
   const { panel, isDark } = useTheme();

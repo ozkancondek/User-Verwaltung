@@ -2,6 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 const ThemeContext = createContext();
 export const ThemeProvider = ({ children }) => {
+  //theme panel for main necassary colors, fonts and responsive sizes
   const panel = {
     text: {
       primary: "#000000",
@@ -30,7 +31,7 @@ export const ThemeProvider = ({ children }) => {
     },
   };
 
-  //states for night mood button and control state
+  //state for toggle night-mood-button and control
   const [isDark, setIsDark] = useState(false);
 
   return (

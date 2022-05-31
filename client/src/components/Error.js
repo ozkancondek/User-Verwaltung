@@ -6,11 +6,13 @@ import { TextField } from "./styled/TextField.styled";
 
 export const Error = () => {
   const navigate = useNavigate();
+  const { isDark, panel } = useTheme();
 
+  //Forward to main page after 3 seconds if app goes to ErrorBoundary
   setTimeout(() => {
     navigate("/");
   }, 3000);
-  const { isDark, panel } = useTheme();
+
   return (
     <Container
       bg={isDark ? panel.bg.dark : panel.bg.light}

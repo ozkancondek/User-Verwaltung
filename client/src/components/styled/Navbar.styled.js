@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 export const NavbarContainer = styled.nav`
   width: 100%;
   height: ${({ extendNavbar }) => (extendNavbar ? "45vh" : "80px")};
-
   background-color: ${({ theme, isdark }) =>
     isdark ? theme.bg.light : theme.bg.dark};
   display: flex;
