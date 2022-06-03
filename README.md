@@ -19,7 +19,7 @@
 
 3. Frontend, React
 
-4. Production, Heroku
+<!-- 4. Production, Heroku -->
 
 ---
 
